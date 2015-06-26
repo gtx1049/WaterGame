@@ -16,12 +16,11 @@ var WaterLayer = cc.Layer.extend({
 		this._super();
 		
 		var size = cc.winSize;
-
-		var helloLabel = new cc.LabelTTF("Hello World", "", 38);
-		helloLabel.x = size.width / 2;
-		helloLabel.y = size.height / 2;
-
-		this.addChild(helloLabel);
+		
+		var bg = new cc.Sprite("res/underwater.jpg");
+		bg._setWidth(size.width);
+		bg._setHeight(size.height);
+		this.addChild(bg, 0);
 		
 		this.ringsprite = new cc.PhysicsSprite("res/CloseSelected.png");
 		
