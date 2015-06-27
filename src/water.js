@@ -18,8 +18,17 @@ var WaterLayer = cc.Layer.extend({
 		var size = cc.winSize;
 		
 		var bg = new cc.Sprite("res/underwater.jpg");
-		bg._setWidth(size.width);
-		bg._setHeight(size.height);
+		var winsize = cc.director.getWinSize();
+		var centerPos = cc.p(winsize.width / 2, winsize.height / 2);
+		bg.setPosition(centerPos);
+		
+		var winw = size.width; //获取屏幕宽度
+		var winh = size.height;//获取屏幕高度
+		var spx = bg.getTextureRect().width;
+		var spy = bg.getTextureRect().height;
+
+		bg.setScaleX(winw/spx); //设置精灵宽度缩放比例
+		bg.setScaleY(winh/spy);
 		this.addChild(bg, 0);
 		
 		this.ringsprite = new cc.PhysicsSprite("res/CloseSelected.png");
