@@ -2,6 +2,10 @@ var WaterLayer = cc.Layer.extend({
 	space : null,
 	ringsprite : null,
 	
+	columnleft : null,
+	columnright : null,
+
+	
 	ctor:function(space){
 		this._super();
 		
@@ -51,6 +55,16 @@ var WaterLayer = cc.Layer.extend({
 	
 		
 		this.addChild(this.ringsprite);
+		
+		this.columnleft = new cc.Sprite("res/column.png");
+		this.columnleft.setPosition(200, 200);
+		
+		this.columright = new cc.Sprite("res/column.png");
+		this.columright.setPosition(400, 200);
+		
+		this.addChild(this.columnleft);
+		this.addChild(this.columright);
+		
 	}
 });
 
@@ -77,7 +91,7 @@ var WaterScene = cc.Scene.extend({
 		//1. new space object 
 		this.space = new cp.Space();
 		//2. setup the  Gravity
-		this.space.gravity = cp.v(0, -350);
+		this.space.gravity = cp.v(0, 0);
 
 		// 3. set up Walls
 		var wallBottom = new cp.SegmentShape(this.space.staticBody,
